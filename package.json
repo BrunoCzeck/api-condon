@@ -1,0 +1,15 @@
+{
+  "name": "api-condon",
+  "version": "1.0.0",
+  "description": "API dedicada ao projeto Condon",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
