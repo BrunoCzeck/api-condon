@@ -1,0 +1,18 @@
+{
+  "name": "app_express_condon",
+  "version": "1.0.0",
+  "description": "API Express Condon",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

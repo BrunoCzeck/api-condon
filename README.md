@@ -1,2 +1,1 @@
-# api-condon
-API dedicada ao projeto Condon
+API Condon
