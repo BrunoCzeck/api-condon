@@ -1,5 +1,8 @@
 const { v4: uuidv4 } = require('uuid');
 const pool = require("../database/connection.cjs")
+const express = require("express");
+const app = express();
+
 const usersController = {
     getUsers: async(req, res) => {
         try {
@@ -22,16 +25,17 @@ const usersController = {
             console.log(error)
         }
     },
-    postUser: async(req, res) => {
+    postUser: async(req, res, next) => {
         try {
             const randomUUID = uuidv4();  
-            const { user, password, apartament, bloc, email, enterprise,  priority} = req.body
-            const sql = `INSERT INTO users (id, user, password, apartament, bloc, email, date_created, enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
-            const [rows, fields] = await pool.query(sql, [ user, password, apartament, bloc, email, enterprise, priority])
+            const { user, password, apartament, bloc, email, id_enterprise,  priority} = req.body
+            const { } = req.header
+            const sql = `INSERT INTO users (id, user, password, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
+            const [rows, fields] = await pool.query(sql, [ user, password, apartament, bloc, email, id_enterprise, priority])
             res.json({
                 id:randomUUID,
                 success:true,
-                message:"Success create user"
+                message:"Success create user" 
             })
         } catch(error) {
             console.log(error)

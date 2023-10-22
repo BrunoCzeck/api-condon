@@ -17,7 +17,7 @@ app.use("/api/v1/mural", muralRouter)
 app.use("/api/v1/chat", chatRouter)
 app.use("/api/v1/scheduler", schedulerRouter)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3333
 
 app.listen(PORT, () => {
     console.log("Server RUN")
