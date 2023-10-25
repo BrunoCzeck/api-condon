@@ -11,7 +11,7 @@ const usersController = {
                 data:rows
             })
         } catch(error) {
-            console.log("Sem dados")
+            console.log(error)
         }
     },
     getUserId: async(req, res) => {
