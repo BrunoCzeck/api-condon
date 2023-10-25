@@ -7,13 +7,13 @@ const usersController = {
     getUsers: async(req, res) => {
         try {
             const client = await pool.connect();
-            const result = await client.query('SELECT * FROM usuario');
+            const result = await pool.query('SELECT * FROM usuario');
             res.json(result.rows);
             client.release();
-          } catch (err) {
+        } catch (err) {
             console.error('Erro na consulta:', err);
             res.status(500).json({ error: 'Erro interno do servidor' });
-          }
+        }
     },
     getUserId: async(req, res) => {
         try {
