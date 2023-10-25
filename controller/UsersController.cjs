@@ -28,14 +28,14 @@ const usersController = {
     postUser: async(req, res, next) => {
         try {
             const randomUUID = uuidv4();  
-            const { user, password, apartament, bloc, email, id_enterprise,  priority} = req.body
+            const { usuario, senha, apartament, bloc, email, id_enterprise,  priority} = req.body
             const { } = req.header
-            const sql = `INSERT INTO users (id, user, password, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
-            const [rows, fields] = await pool.query(sql, [ user, password, apartament, bloc, email, id_enterprise, priority])
+            const sql = `INSERT INTO users (id, usuario, senha, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
+            const [rows, fields] = await pool.query(sql, [ usuario, senha, apartament, bloc, email, id_enterprise, priority])
             res.json({
                 id:randomUUID,
                 success:true,
-                message:"Success create user" 
+                message:"Success create usuario" 
             })
         } catch(error) {
             console.log(error)
@@ -43,11 +43,11 @@ const usersController = {
     },
     updateUser: async(req, res) => {
         try {
-            const { user, password, email } = req.body
+            const { usuario, senha, email } = req.body
             const { id } = req.params
 
-            const sql = "UPDATE users SET user = ?, password = ?, email = ? where id = ?"
-            const [rows, fields] = await pool.query(sql, [user, password, email, id])
+            const sql = "UPDATE users SET usuario = ?, senha = ?, email = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [usuario, senha, email, id])
             res.json({
                 data:rows
             })
