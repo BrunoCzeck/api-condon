@@ -1,20 +1,19 @@
 const { v4: uuidv4 } = require('uuid');
-const pool = require("../database/connection.cjs")
+const pool = require('../database/connection.cjs')
 const express = require("express");
 const app = express();
 
 const usersController = {
     getUsers: async(req, res) => {
         try {
-            const [rows, fields] = await pool.query("SELECT * FROM usuario")
-            res.json({
-                data:rows
-            })
-        } catch(error) {
-            console.log(error)
-            res.send(`<h1>Consegui acessar a api</h1>`.trim())
-            
-        }
+            const client = await pool.connect();
+            const result = await client.query('SELECT * FROM usuario');
+            res.json(result.rows);
+            client.release();
+          } catch (err) {
+            console.error('Erro na consulta:', err);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+          }
     },
     getUserId: async(req, res) => {
         try {

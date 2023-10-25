@@ -1,7 +1,6 @@
 // seu-arquivo.cjs
 const express = require('express')
 const app = express()
-
 require('dotenv').config() /* Config o env */
 
 const usersRouter = require('./routes/routes.condon.cjs')           /* Chama a rota usuário */
