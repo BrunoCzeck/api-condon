@@ -1,4 +1,6 @@
-const mysql = require('mysql2')
+/* const mysql = require('mysql2')
+ */
+const { Pool } = require('pg');
 
 /* const pool = mysql.createPool({
     host: process.env.DATABASE_URL,
@@ -8,7 +10,7 @@ const mysql = require('mysql2')
 
 }); */
 
-const pool = mysql.createPool({
+const pool = new Pool({
     host: process.env.DATABASE_URL,
     user: process.env.PGUSER,
     database: process.env.PGDATABASE,
@@ -19,5 +21,5 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-module.exports = pool.promise();
+module.exports = pool;
 
