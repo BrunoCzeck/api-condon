@@ -12,6 +12,8 @@ const usersController = {
             })
         } catch(error) {
             console.log(error)
+            res.send(`<h1>Consegui acessar a api</h1>`.trim())
+            
         }
     },
     getUserId: async(req, res) => {
