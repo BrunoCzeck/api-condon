@@ -19,7 +19,7 @@ const usersController = {
     getUserId: async(req, res) => {
         try {
             const { id } = req.params
-            const [rows, fields] = await pool.query("SELECT * FROM users where id = ?", [id])
+            const [rows, fields] = await pool.query("SELECT * FROM usuario where id = ?", [id])
             res.json({
                 data:rows
             })
@@ -48,7 +48,7 @@ const usersController = {
             const { usuario, senha, email } = req.body
             const { id } = req.params
 
-            const sql = "UPDATE users SET usuario = ?, senha = ?, email = ? where id = ?"
+            const sql = "UPDATE usuario SET usuario = ?, senha = ?, email = ? where id = ?"
             const [rows, fields] = await pool.query(sql, [usuario, senha, email, id])
             res.json({
                 data:rows
@@ -60,7 +60,7 @@ const usersController = {
     deleteUserId: async(req, res) => {
         try {
             const { id } = req.params
-            const sql = "DELETE FROM users where id = ?"
+            const sql = "DELETE FROM usuario where id = ?"
             const [rows, fields] = await pool.query(sql, [id])
             res.json({
                 data:rows

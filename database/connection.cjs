@@ -1,19 +1,9 @@
-const mysql = require('mysql')
+import pg from "pg";
+const { Pool } = pg;
 
-/* const { Pool } = require('pg');
- */
-const pool = mysql.createPool({
-    host: process.env.DATABASE_URL,
-/*  user: process.env.PGUSER,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD, */
+dotenv.config();
 
-});
+const databaseConfig = { connectionString: process.env.DATABASE_URL };
+const pool = new Pool(databaseConfig);
 
-/* const pool = new Pool({
-    host: process.env.DATABASE_URL,
-
-});
- */
-module.exports = pool;
-
+export default pool;
