@@ -6,7 +6,7 @@ const app = express();
 const usersController = {
     getUsers: async(req, res) => {
         try {
-            const [rows, fields] = await pool.query("SELECT * FROM users")
+            const [rows, fields] = await pool.query("SELECT * FROM usuario")
             res.json({
                 data:rows
             })
@@ -32,7 +32,7 @@ const usersController = {
             const randomUUID = uuidv4();  
             const { usuario, senha, apartament, bloc, email, id_enterprise,  priority} = req.body
             const { } = req.header
-            const sql = `INSERT INTO users (id, usuario, senha, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
+            const sql = `INSERT INTO users (1, usuario, senha, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`
             const [rows, fields] = await pool.query(sql, [ usuario, senha, apartament, bloc, email, id_enterprise, priority])
             res.json({
                 id:randomUUID,
