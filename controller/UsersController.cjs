@@ -1,8 +1,17 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors")
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../database/connection.cjs')
 const app = express();
+app.use(cors({
+    origin: 'http://localhost:33232323232323232', // Atualize com a origem permitida apropriada
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    allowedHeaders: 'Content-Type,Authorization',
+  }));
+  
+  app.use(express.json());
 
 const usersController = {
     getUsers: async(req, res) => {
@@ -30,15 +39,6 @@ const usersController = {
     },
     postUser: async(req, res, next) => {
         try {      
-            app.use((req, res, next) => {
-                res.header('Access-Control-Allow-Origin', '*')
-                res.header('Access-Control-Allow-Headers', 'Content-Type')
-                res.header('Access-Control-Allow-Methods', 'PUT, PATCH, DELETE, POST, GET')
-                res.header('Access-Control-Allow-DOIS', '2T')
-                
-                app.use(cors())
-                next();
-            });    
             const randomUUID = uuidv4();
             const prioridade = '1'
             const { id, usuario, senha, apartament, bloc, email, id_enterprise } = req.body;
