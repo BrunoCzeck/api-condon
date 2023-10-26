@@ -1,7 +1,12 @@
+const express = require("express");
+const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../database/connection.cjs')
-const express = require("express");
 const app = express();
+
+
+
+
 
 const usersController = {
     getUsers: async(req, res) => {
@@ -29,6 +34,19 @@ const usersController = {
     },
     postUser: async(req, res, next) => {
         try {
+            app.use((req, res, next) => {
+                res.header('Access-Control-Allow-Origin', '*'); // Atualize com a origem apropriada permitida
+                res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    
+
+                if (req.method === 'OPTIONS') {
+                  res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+                  return res.status(200).json({});
+                }
+                next();
+              });
+              
+              app.use(express.json());
             const randomUUID = uuidv4();
             const prioridade = '1'
             const { id, usuario, senha, apartament, bloc, email, id_enterprise } = req.body;
