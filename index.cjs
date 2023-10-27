@@ -1,8 +1,12 @@
 // seu-arquivo.cjs
 const express = require('express')
+const cors = require('cors');
 const app = express()
 require('dotenv').config() /* Config o env */
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
+  
 const usersRouter = require('./routes/routes.condon.cjs')           /* Chama a rota usuário */
 const muralRouter = require('./routes/routes.mural.cjs')           /* Chama a rota mural */
 const chatRouter = require('./routes/routes.chat.cjs')            /* Chama a rota chat */

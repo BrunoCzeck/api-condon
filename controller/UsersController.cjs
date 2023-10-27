@@ -3,15 +3,6 @@ const cors = require("cors")
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../database/connection.cjs')
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:33232323232323232', // Atualize com a origem permitida apropriada
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    allowedHeaders: 'Content-Type,Authorization',
-  }));
-  
-  app.use(express.json());
 
 const usersController = {
     getUsers: async(req, res) => {
