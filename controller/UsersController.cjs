@@ -2,11 +2,9 @@ const express = require("express");
 const cors = require("cors")
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../database/connection.cjs')
-const app = express();
-
-
 
 const usersController = {
+    
     getUsers: async(req, res) => {
         try {
             const client = await pool.connect();
@@ -32,15 +30,6 @@ const usersController = {
     },
     postUser: async(req, res, next) => {
         try {      
-            const allowedOrigins = ['http://localhost:3000', 'https://api-condon-production.up.railway.app'];
-
-            app.use(cors({
-                origin: allowedOrigins,
-                methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Adicione os métodos HTTP que deseja permitir
-                preflightContinue: false,
-                optionsSuccessStatus: 204,
-                allowedHeaders: 'Content-Type,Authorization', // 
-              }));
             const randomUUID = uuidv4();
             const prioridade = '1'
             const { id, usuario, senha, apartament, bloc, email, id_enterprise } = req.body;
