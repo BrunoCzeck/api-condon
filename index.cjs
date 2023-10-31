@@ -1,8 +1,8 @@
-// seu-arquivo.cjs
 const express = require('express')
-const cors = require('cors');
 const app = express()
 require('dotenv').config() /* Config o env */
+const cors = require('cors'); // Importe o pacote CORS
+const bodyParser = require('body-parser');
 
 
 const usersRouter = require('./routes/routes.condon.cjs')           /* Chama a rota usuário */
@@ -10,18 +10,16 @@ const muralRouter = require('./routes/routes.mural.cjs')           /* Chama a ro
 const chatRouter = require('./routes/routes.chat.cjs')            /* Chama a rota chat */
 const schedulerRouter = require('./routes/routes.scheduler.cjs') /* Chama a rota scheduler */
 
-const corsOptions = {
-    origin: 'https://api-condon-production.up.railway.app', // Substitua pelo seu domínio
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
-  };
+/* app.use(express.urlencoded({extended: false}))
+app.use(express.json()) */
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors({
+  origin: '*', // Coloque a origem do seu aplicativo React
+  optionsSuccessStatus: 200, // Algumas versões do IE não retornam o status corretamente, por isso, definimos explicitamente o status de sucesso
+})
+);
 
-  
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
-app.use(cors(corsOptions));
 app.use("/api/v1/users", usersRouter)
 app.use("/api/v1/mural", muralRouter)
 app.use("/api/v1/chat", chatRouter)
