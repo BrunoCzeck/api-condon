@@ -16,6 +16,7 @@ const usersController = {
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     },
+
     getUserId: async(req, res) => {
         try {
             const { id } = req.params
@@ -28,6 +29,7 @@ const usersController = {
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     },
+
     postUser: async(req, res, next) => {
         try {      
             const randomUUID = uuidv4();
@@ -45,6 +47,29 @@ const usersController = {
         res.status(500).json({ error: 'Erro interno do servidor' });
         }
     },
+    
+    postUserValidate: async (req, res, next) => {
+        try {
+            const { senha, email } = req.body;
+            
+            const sql = `SELECT * FROM usuario WHERE email = ? AND senha = ?`;
+    
+            const [rows, fields] = await pool.query(sql, [email, senha]);
+    
+            if (rows.length > 0) {
+                // Se houver pelo menos um usuário correspondente, retorne o primeiro encontrado
+                res.json({
+                    data: rows[0] // Retorna o primeiro usuário encontrado
+                });
+            } else {
+                res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    },
+
     updateUser: async(req, res) => {
         try {
             const { usuario, senha, email } = req.body;
@@ -58,6 +83,7 @@ const usersController = {
             console.log(err)
         }
     },
+
     deleteUserId: async(req, res) => {
         try {
             const { id } = req.params
