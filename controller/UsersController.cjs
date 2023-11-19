@@ -51,14 +51,17 @@ const usersController = {
     postUserValidate: async (req, res, next) => {
         try {
             const { senha, email } = req.body;
-            
+            const client = await pool.connect();
             const sql = `SELECT * FROM usuario WHERE email = ? AND senha = ?`;
     
             const [rows, fields] = await pool.query(sql, [email, senha]);
     
             if (rows.length > 0) {
                 // Se houver pelo menos um usuário correspondente, retorne o primeiro encontrado
+                client.release();
+
                 res.json({
+                    
                     data: rows[0] // Retorna o primeiro usuário encontrado
                 });
             } else {
