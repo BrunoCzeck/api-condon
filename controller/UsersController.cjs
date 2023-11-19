@@ -50,23 +50,17 @@ const usersController = {
     
     postUserValidate: async (req, res, next) => {
         try {
-            const { senha, email } = req.body;
+            const { email, senha } = req.body;
+            
             const client = await pool.connect();
             const sql = `SELECT * FROM usuario WHERE email = $1 AND senha = $2`;
     
-            const [rows, fields] = await pool.query(sql, [email, senha]);
-    
-            if (rows.length > 0) {
-                // Se houver pelo menos um usuário correspondente, retorne o primeiro encontrado
-                client.release();
+            const values = [email, senha];
+            const result = await client.query(sql, values);
 
-                res.json({
-                    
-                    data: rows[0] // Retorna o primeiro usuário encontrado
-                });
-            } else {
-                res.status(404).json({ error: 'Usuário não encontrado' });
-            }
+            console.log(result.rows);
+            res.json(result.rows);
+            client.release();
         } catch (error) {
             console.log(error);
             res.status(500).json({ error: 'Internal Server Error' });
