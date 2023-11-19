@@ -1,96 +1,98 @@
 const express = require("express");
-const cors = require("cors")
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../database/connection.cjs')
 
 const usersController = {
-    
     getUsers: async(req, res) => {
-        try {
-            const client = await pool.connect();
-            const result = await pool.query('SELECT * FROM usuario');
-            res.json(result.rows);
-            client.release();
-        } catch (err) {
-            console.error('Erro na consulta:', err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
+    try {
+        const [rows, fields] = await pool.query("SELECT * FROM usuario")
+        res.json({
+            data:rows
+        })
+        } catch(error) {
+            console.log("Sem dados")
         }
     },
 
     getUserId: async(req, res) => {
         try {
             const { id } = req.params
-            const client = await pool.connect();
-            const result = await pool.query('SELECT * FROM usuario where id = $1', [id])
-            res.json(result.rows);
-            client.release();
-        } catch(err) {
-            console.error('Erro na consulta:', err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
+            const [rows, fields] = await pool.query("SELECT * FROM usuario where id = ?", [id])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log("Sem dados")
         }
     },
 
     postUser: async(req, res, next) => {
-        try {      
-            const randomUUID = uuidv4();
-            const prioridade = '1'
-            const { id, usuario, senha, apartament, bloc, email, id_enterprise } = req.body;
-            const client = await pool.connect();
-            const sql = 'INSERT INTO usuario (id, usuario, senha, apartament, bloc, email, date_created, id_enterprise, priority) VALUES ($1, $2, $3, $4, $5, $6, NOW(), $7, $8) RETURNING *';
-            const values = [randomUUID, usuario, senha, apartament, bloc, email, id_enterprise, prioridade];
-            const result = await client.query(sql, values);
-            console.log(result.rows);
-            res.json(result.rows);
-            client.release();
-        } catch (err) {
-        console.error('Erro na consulta:', err);
-        res.status(500).json({ error: 'Erro interno do servidor' });
+        try {
+            const randomUUID = uuidv4();  
+            const { usuario, senha, apartament, bloc, email, id_enterprise } = req.body;
+            
+            const sql = `INSERT INTO usuario (id, usuario, senha, apartament, bloc, email, date_created, id_enterprise, priority) values ("${randomUUID}", ?, ?, ?, ?, ?, NOW(), ?, 1)`;
+    
+            const [rows, fields] = await pool.query(sql, [usuario, senha, apartament, bloc, email, id_enterprise]);
+    
+            res.json({
+                id: randomUUID,
+                success: true,
+                message: "Success create usuario" 
+            });
+        } catch(error) {
+            console.log(error);
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     },
     
     postUserValidate: async (req, res, next) => {
         try {
-            const { email, senha } = req.body;
+            const { senha, email } = req.body;
             
-            const client = await pool.connect();
-            const sql = `SELECT * FROM usuario WHERE email = $1 AND senha = $2`;
+            const sql = `SELECT * FROM usuario WHERE email = ? AND senha = ?`;
     
-            const values = [email, senha];
-            const result = await client.query(sql, values);
-
-            console.log(result.rows);
-            res.json(result.rows);
-            client.release();
+            const [rows, fields] = await pool.query(sql, [email, senha]);
+    
+            if (rows.length > 0) {
+                // Se houver pelo menos um usuário correspondente, retorne o primeiro encontrado
+                res.json({
+                    data: rows[0] // Retorna o primeiro usuário encontrado
+                });
+            } else {
+                res.status(404).json({ error: 'Usuário não encontrado' });
+            }
         } catch (error) {
             console.log(error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     },
-
+    
     updateUser: async(req, res) => {
         try {
-            const { usuario, senha, email } = req.body;
-            const { id } = req.params;
-            const values = [id, usuario, senha, email]
-            const client = await pool.connect();
-            const sql = "UPDATE usuario SET usuario = $2, senha = $3, email = $4 where id = $1"
-            const result = await client.query(sql, values)
-            res.json(result.rows);
-        } catch(err) {
-            console.log(err)
+            const { usuario, senha, email } = req.body
+            const { id } = req.params
+
+            const sql = "UPDATE usuario SET usuario = ?, senha = ?, email = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [usuario, senha, email, id])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log(error)
         }
     },
-
+    
     deleteUserId: async(req, res) => {
         try {
             const { id } = req.params
-            const client = await pool.connect();
-            const sql = "DELETE FROM usuario where id = $1"
-            const result = await client.query(sql, [id])
-            res.json(result.rows);
-        } catch (err) {
-            console.error('Erro na consulta:', err);
-            res.status(500).json({ error: 'Erro interno do servidor' });
+            const sql = "DELETE FROM usuario where id = ?"
+            const [rows, fields] = await pool.query(sql, [id])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log(error)
         }
     }
 }
