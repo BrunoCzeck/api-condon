@@ -52,7 +52,7 @@ const usersController = {
         try {
             const { senha, email } = req.body;
             const client = await pool.connect();
-            const sql = `SELECT * FROM usuario WHERE email = ? AND senha = ?`;
+            const sql = `SELECT * FROM usuario WHERE email = $1 AND senha = $2`;
     
             const [rows, fields] = await pool.query(sql, [email, senha]);
     
