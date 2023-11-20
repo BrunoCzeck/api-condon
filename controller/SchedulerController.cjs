@@ -11,6 +11,7 @@ const schedulerController = {
             console.log(error)
         }
     },
+
     getSchedulerId: async(req, res) => {
         try {
             const { id } = req.params
@@ -22,6 +23,7 @@ const schedulerController = {
             console.log(error)
         }
     },
+
     postScheduler: async(req, res) => {
         try {
             const randomUUID = uuidv4();  
@@ -37,6 +39,7 @@ const schedulerController = {
             console.log(error)
         }
     },
+
     updateScheduler: async(req, res) => {
         try {
             const { date_reserve, hours_reserve_init, hours_reserve_end, } = req.body
@@ -50,6 +53,7 @@ const schedulerController = {
             console.log(error)
         }
     },
+    
     deleteSchedulerId: async(req, res) => {
         try {
             const { id } = req.params

@@ -11,6 +11,7 @@ const muralController = {
             console.log(error)
         }
     },
+    
     getPostsId: async(req, res) => {
         try {
             const { id } = req.params
@@ -22,6 +23,7 @@ const muralController = {
             console.log(error)
         }
     },
+    
     postMural: async(req, res) => {
         try {
             const randomUUID = uuidv4();  

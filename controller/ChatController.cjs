@@ -11,6 +11,7 @@ const chatController = {
             console.log(error)
         }
     },
+    
     getChatId: async(req, res) => {
         try {
             const { user_id } = req.params
@@ -22,6 +23,7 @@ const chatController = {
             console.log(error)
         }
     },
+
     postChat: async(req, res) => {
         try {
             const randomUUID = uuidv4();  
