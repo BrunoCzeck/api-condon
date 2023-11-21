@@ -70,11 +70,11 @@ const usersController = {
     
     updateUser: async(req, res) => {
         try {
-            const { usuario, senha, email } = req.body
+            const { usuario, senha, email, priority } = req.body
             const { id } = req.params
 
-            const sql = "UPDATE usuario SET usuario = ?, senha = ?, email = ? where id = ?"
-            const [rows, fields] = await pool.query(sql, [usuario, senha, email, id])
+            const sql = "UPDATE usuario SET usuario = ?, senha = ?, email = ?, priority = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [usuario, senha, email, priority, id])
             res.json({
                 data:rows
             })
