@@ -15,7 +15,7 @@ const muralController = {
     getPostsId: async(req, res) => {
         try {
             const { id } = req.params
-            const [rows, fields] = await pool.query("SELECT * FROM mural where id_mural = ?", [id])
+            const [rows, fields] = await pool.query("SELECT * FROM mural where id_enterprise = ?", [id])
             res.json({
                 data:rows
             })
@@ -27,9 +27,9 @@ const muralController = {
     postMural: async(req, res) => {
         try {
             const randomUUID = uuidv4();  
-            const { title, description, user_id } = req.body
-            const sql = `INSERT INTO mural (id_mural, title, description, date_created, user_id) values ("${randomUUID}", ?, ?, NOW(), ?)`
-            const [rows, fields] = await pool.query(sql, [title, description, user_id])
+            const { title, description, user_id, id_enterprise } = req.body
+            const sql = `INSERT INTO mural (id_mural, title, description, date_created, user_id, id_enterprise) values ("${randomUUID}", ?, ?, NOW(), ?, ?)`
+            const [rows, fields] = await pool.query(sql, [title, description, user_id, id_enterprise])
             res.json({
                 id_mural:randomUUID,
                 success:true,
