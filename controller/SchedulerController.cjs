@@ -81,36 +81,65 @@ const schedulerController = {
     },
 
     /* Get Scheduler Type */
-
-    getSchedulerTypeId: async(req, res) => {
+    getSchedulerTypeId: async (req, res) => {
         try {
-            const { id } = req.params
-            const [rows, fields] = await pool.query("SELECT * FROM scheduler_types where id_enterprise = ?", [id])
+            const { id } = req.params;
+            const [rows, fields] = await pool.query("SELECT * FROM scheduler_types where id_enterprise = ?", [id]);
+    
+            // Mapeando os resultados para o formato desejado
+            const data = rows.map(row => {
+                return {
+                    id_enterprise:row.id_enterprise,
+                    type: row.tipo,
+                    hours: row.hours // Retorna diretamente row.hours
+                }
+            });
             res.json({
-                data:rows
-            })
+                data
+            });
         } catch(error) {
-            console.log(error)
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: "Error retrieving scheduler types"
+            });
         }
     },
-
-    postSchedulerType: async(req, res) => {
+    
+    postSchedulerType: async (req, res) => {
         try {
-            const randomUUID = uuidv4();  
-            const { id_enterprise, tipo, hours } = req.body
+            const randomUUID = uuidv4();
+            const { id_enterprise, tipo, hours } = req.body;
+    
+            // Objeto com a estrutura desejada
+            const data = {
+                type: tipo // Assumindo que 'tipo' corresponde ao valor 'academia'
+            };
+    
             const sql = `INSERT INTO scheduler_types (id_scheduler, id_enterprise, tipo, hours, date_created) 
-            values ("${randomUUID}", ?, ?, ?, NOW())`
-            const [rows, fields] = await pool.query(sql, [id_enterprise, tipo, hours])
+                VALUES (?, ?, ?, ?, NOW())`;
+    
+            // Formato dos dados 'hours' para serem inseridos no banco como JSON
+            const hoursJSON = JSON.stringify({
+                hours
+            });
+    
+            const [rows, fields] = await pool.query(sql, [randomUUID, id_enterprise, tipo, hoursJSON]);
+    
             res.json({
-                id:randomUUID,
-                success:true,
-                message:"Success create scheduler"
-            })
+                id: randomUUID,
+                success: true,
+                message: "Success create scheduler"
+            });
         } catch(error) {
-            console.log(error)
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: "Error creating scheduler"
+            });
         }
     },
-
+    
     updateSchedulerType: async(req, res) => {
         try {
             const { hours } = req.body
