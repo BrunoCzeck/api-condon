@@ -10,6 +10,7 @@ router.delete("/:id", schedulerController.deleteSchedulerId)
 
 /* Get Scheduler Type */
 router.get("/types/:id", schedulerController.getSchedulerTypeId)
+router.get("/types/enterprise/:id", schedulerController.getSchedulerIdEnterprise)
 router.post("/types", schedulerController.postSchedulerType)
 router.put("/types/:id", schedulerController.updateSchedulerType)
 router.delete("/types/:id", schedulerController.deleteSchedulerTypeId)

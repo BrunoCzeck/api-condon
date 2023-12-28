@@ -105,6 +105,31 @@ const schedulerController = {
             });
         }
     },
+
+    getSchedulerIdEnterprise: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const [rows, fields] = await pool.query("SELECT * FROM scheduler_types where id_scheduler = ?", [id]);
+    
+            // Mapeando os resultados para o formato desejado
+            const data = rows.map(row => {
+                return {
+                    id_enterprise:row.id_enterprise,
+                    type: row.tipo,
+                    hours: row.hours // Retorna diretamente row.hours
+                }
+            });
+            res.json({
+                data
+            });
+        } catch(error) {
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: "Error retrieving scheduler types"
+            });
+        }
+    },
     
     postSchedulerType: async (req, res) => {
         try {
@@ -142,15 +167,27 @@ const schedulerController = {
     
     updateSchedulerType: async(req, res) => {
         try {
-            const { hours } = req.body
-            const { id } = req.params
-            const sql = "UPDATE scheduler_types SET hours = ? where id_scheduler = ?"
-            const [rows, fields] = await pool.query(sql, [ hours, id ])
+            const { id } = req.params;
+            const { hours } = req.body;
+            const sql = `UPDATE scheduler_types SET hours = ? where id_scheduler = ?`;
+
+            // Formato dos dados 'hours' para serem inseridos no banco como JSON
+            const hoursJSON = JSON.stringify({
+                hours
+            });
+    
+            const [rows, fields] = await pool.query(sql, [hoursJSON, id]);
+    
             res.json({
-                data:rows
-            })
+                success: true,
+                message: "Success Put scheduler type"
+            });
         } catch(error) {
-            console.log(error)
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: "Error creating scheduler"
+            });
         }
     },
     
