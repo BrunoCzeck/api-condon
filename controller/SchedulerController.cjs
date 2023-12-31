@@ -39,10 +39,10 @@ const schedulerController = {
     postScheduler: async(req, res) => {
         try {
             const randomUUID = uuidv4();  
-            const { id_enterprise, user_id, apartament, bloc, date_reserve, hours_reserve_init, hours_reserve_end } = req.body
-            const sql = `INSERT INTO scheduler (id_scheduler, id_enterprise, user_id, apartament, bloc, date_reserve, hours_reserve_init, hours_reserve_end, date_created) 
-            values ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, NOW())`
-            const [rows, fields] = await pool.query(sql, [ id_enterprise, user_id, apartament, bloc, date_reserve, hours_reserve_init, hours_reserve_end])
+            const { id_enterprise, user_id, name, apartament, bloc, date_reserve, space } = req.body
+            const sql = `INSERT INTO scheduler (id_scheduler, id_enterprise, user_id, name, apartament, bloc, date_reserve, date_created, status, space) 
+            values ("${randomUUID}", ?, ?, ?, ?, ?, ?, NOW(), "Reservado", ?)`
+            const [rows, fields] = await pool.query(sql, [ id_enterprise, user_id, name, apartament, bloc, date_reserve, space])
             res.json({
                 id:randomUUID,
                 success:true,
@@ -52,13 +52,13 @@ const schedulerController = {
             console.log(error)
         }
     },
-
+    /* Esse Update faz o cancelamento do agendamento*/
     updateScheduler: async(req, res) => {
         try {
-            const { date_reserve, hours_reserve_init, hours_reserve_end, } = req.body
+            
             const { id } = req.params
-            const sql = "UPDATE scheduler SET date_reserve = ?, hours_reserve_init = ?, hours_reserve_end = ? where id_scheduler = ?"
-            const [rows, fields] = await pool.query(sql, [ date_reserve, hours_reserve_init, hours_reserve_end, id ])
+            const sql = "UPDATE scheduler SET status = 'Cancelado' where id_scheduler = ?"
+            const [rows, fields] = await pool.query(sql, [ id ])
             res.json({
                 data:rows
             })
@@ -89,6 +89,7 @@ const schedulerController = {
             // Mapeando os resultados para o formato desejado
             const data = rows.map(row => {
                 return {
+                    id_scheduler: row.id_scheduler,
                     id_enterprise:row.id_enterprise,
                     type: row.tipo,
                     hours: row.hours // Retorna diretamente row.hours
@@ -114,6 +115,7 @@ const schedulerController = {
             // Mapeando os resultados para o formato desejado
             const data = rows.map(row => {
                 return {
+                    id_scheduler: row.id_scheduler,
                     id_enterprise:row.id_enterprise,
                     type: row.tipo,
                     hours: row.hours // Retorna diretamente row.hours
