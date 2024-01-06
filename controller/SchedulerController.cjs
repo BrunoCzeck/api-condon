@@ -36,13 +36,26 @@ const schedulerController = {
         }
     },
 
+    getSchedulerReserve: async(req, res) => {
+        try {
+            const { id } = req.params
+            const { space } = req.query
+            const [rows, fields] = await pool.query(`SELECT * FROM scheduler where id_enterprise = ? AND status = "Reservado" AND space = ? order by date_reserve`, [id, space])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    },
+
     postScheduler: async(req, res) => {
         try {
             const randomUUID = uuidv4();  
-            const { id_enterprise, user_id, name, apartament, bloc, date_reserve, space } = req.body
-            const sql = `INSERT INTO scheduler (id_scheduler, id_enterprise, user_id, name, apartament, bloc, date_reserve, date_created, status, space) 
+            const { id_enterprise, user_id, nome, apartament, bloc, date_reserve, space } = req.body
+            const sql = `INSERT INTO scheduler (id_scheduler, id_enterprise, user_id, nome, apartament, bloc, date_reserve, date_created, status, space) 
             values ("${randomUUID}", ?, ?, ?, ?, ?, ?, NOW(), "Reservado", ?)`
-            const [rows, fields] = await pool.query(sql, [ id_enterprise, user_id, name, apartament, bloc, date_reserve, space])
+            const [rows, fields] = await pool.query(sql, [ id_enterprise, user_id, nome, apartament, bloc, date_reserve, space])
             res.json({
                 id:randomUUID,
                 success:true,

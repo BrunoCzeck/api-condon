@@ -4,6 +4,7 @@ const schedulerController = require("../controller/SchedulerController.cjs")
 
 router.get("/:id", schedulerController.getSchedulerId)
 router.get("/enterprise/:id", schedulerController.getSchedulerEntepriseId)
+router.get("/reserve/:id", schedulerController.getSchedulerReserve)
 router.post("/", schedulerController.postScheduler)
 router.put("/:id", schedulerController.updateScheduler)
 router.delete("/:id", schedulerController.deleteSchedulerId)
