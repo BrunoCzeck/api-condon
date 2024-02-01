@@ -10,6 +10,7 @@ const muralRouter = require('./routes/routes.mural.cjs')           /* Chama a ro
 const chatRouter = require('./routes/routes.chat.cjs')            /* Chama a rota chat */
 const schedulerRouter = require('./routes/routes.scheduler.cjs') /* Chama a rota scheduler */
 const enterpriseController = require('./routes/routes.enterprise.cjs') /* Chama a rota scheduler */
+const correspondenceRouter = require('./routes/routes.correspondence.cjs') /* Chama a rota scheduler */
 
 
 /* app.use(express.urlencoded({extended: false}))
@@ -27,6 +28,7 @@ app.use("/api/v1/mural", muralRouter)
 app.use("/api/v1/chat", chatRouter)
 app.use("/api/v1/scheduler", schedulerRouter)
 app.use("/api/v1/enterprise", enterpriseController)
+app.use("/api/v1/correspondence", correspondenceRouter)
 
 
 const PORT = process.env.PORT || 3333

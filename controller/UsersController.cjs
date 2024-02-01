@@ -26,6 +26,18 @@ const usersController = {
         }
     },
 
+    getUserEnterpriseId: async(req, res) => {
+        try {
+            const { id } = req.params
+            const [rows, fields] = await pool.query("SELECT * FROM usuario WHERE id_enterprise = ? ORDER BY bloc, apartament", [id])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log("Sem dados")
+        }
+    },
+
     postUser: async(req, res, next) => {
         try {
             const randomUUID = uuidv4();  
