@@ -1,0 +1,28 @@
+{
+  "id_chat": "5fed923e-5722-4df4-850d-763a8e686bf9",
+  "user_id": "f337038d-87ec-4685-be64-969712a5b141",
+  "apartament": 611,
+  "name": "Bruno Gomes Czeck",
+  "bloc": "C",
+  "id_enterprise": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
+  "chat": [
+    {
+      "id_message": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
+      "user_id": "a390fac7-a9dd-4f97-9429-cf818c9198c2",
+      "description": "Olá, chegou uma encomenda para você",
+      "date_message": "2024-02-08T22:00:00.000Z"
+    },
+    {
+      "id_message": "647c71be-caa2-4bc1-8ec4-d6c17b4ae080",
+      "user_id": "b342e52d-4224-4b07-bc99-90ea64ae9e45",
+      "description": "Ok",
+      "date_message": "2024-02-08T23:00:00.000Z"
+    },
+    {
+      "id_message": "35513ebb-43c0-4146-af40-30b97d2a79e2",
+      "user_id": "b342e52d-4224-4b07-bc99-90ea64ae9e45",
+      "description": "Estou indo retirar",
+      "date_message": "2024-02-08T23:05:00.000Z"
+    }
+  ]
+}
