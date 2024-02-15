@@ -1,0 +1,43 @@
+{
+  "id_votacao": "5fed923e-5722-4df4-850d-763a8e686bf9",
+  "user_id": "f337038d-87ec-4685-be64-969712a5b141",
+  "apartament": 611,
+  "name": "Bruno Gomes Czeck",
+  "bloc": "C",
+  "id_enterprise": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
+  "votacao": [
+    {
+      "user_id": "f337038d-87ec-4685-be64-969712a5b141",
+      "name": "Bruno Gomes Czeck",
+      "apartament": 611,
+      "bloc": "C",
+      "votos": {
+        "positive": 1,
+        "negative": 0,
+        "others": 0
+      }
+    },
+    {
+      "user_id": "a390fac7-a9dd-4f97-9429-cf818c9198c2",
+      "name": "Usuário 2",
+      "apartament": 613,
+      "bloc": "C",
+      "votos": {
+        "positive": 0,
+        "negative": 1,
+        "others": 0
+      }
+    },
+    {
+      "user_id": "b342e52d-4224-4b07-bc99-90ea64ae9e45",
+      "name": "Usuário 3",
+      "apartament": 612,
+      "bloc": "C",
+      "votos": {
+        "positive": 1,
+        "negative": 0,
+        "others": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+
+{
+  "id_votacao": "5fed923e-5722-4df4-850d-763a8e686bf9",
+  "id_enterprise": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
+  "title": "[Fechamento da Sacada]",
+  "description": "Descrição do Fechamento da Sacada ou assunto que será discutido",
+  "date_init": "2024-02-05T00:00:00.000Z",
+  "date_end": "2024-02-10T00:00:00.000Z"
+}
