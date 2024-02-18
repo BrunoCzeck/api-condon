@@ -5,6 +5,7 @@
   "name": "Bruno Gomes Czeck",
   "bloc": "C",
   "id_enterprise": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
+  "votacao_change": true,
   "votacao": [
     {
       "user_id": "f337038d-87ec-4685-be64-969712a5b141",
