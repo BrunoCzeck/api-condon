@@ -1,43 +1,68 @@
 {
-  "id_votacao": "5fed923e-5722-4df4-850d-763a8e686bf9",
-  "user_id": "f337038d-87ec-4685-be64-969712a5b141",
-  "apartament": 611,
-  "name": "Bruno Gomes Czeck",
-  "bloc": "C",
+  "id_voting_users": "5fed923e-5722-4df4-850d-763a8e686bf9",
   "id_enterprise": "029e1c78-4a7b-4df4-8419-c84af099cf8c",
-  "votacao_change": true,
+  "votacao_change": 1,
+  "title": "[Fechamento de Sacada]",
+  "description": "Descrição do Fechamento da Sacada ou assunto que será discutido",
+  "date_init": "2024-02-05T00:00:00.000Z",
+  "date_end": "2024-02-10T00:00:00.000Z", 
+  "all_users": 205,
   "votacao": [
     {
       "user_id": "f337038d-87ec-4685-be64-969712a5b141",
-      "name": "Bruno Gomes Czeck",
+      "usuario": "Bruno Gomes Czeck",
       "apartament": 611,
       "bloc": "C",
+      "date_voting": "2024-02-06T00:00:00.000Z",
       "votos": {
-        "positive": 1,
-        "negative": 0,
-        "others": 0
+        "option-1": 1, 
+        "option-2": 0,
+        "option-3": 0,
+        "option-4": 0,
+        "option-5": 0,
+        "option-6": 0,
+        "option-7": 0,
+        "option-8": 0,
+        "option-9": 0,
+        "option-10": 0
       }
     },
     {
       "user_id": "a390fac7-a9dd-4f97-9429-cf818c9198c2",
-      "name": "Usuário 2",
+      "usuario": "Usuário 2",
       "apartament": 613,
       "bloc": "C",
+      "date_voting": "2024-02-06T00:00:00.000Z",
       "votos": {
-        "positive": 0,
-        "negative": 1,
-        "others": 0
+        "option-1": 1, 
+        "option-2": 0,
+        "option-3": 0,
+        "option-4": 0,
+        "option-5": 0,
+        "option-6": 0,
+        "option-7": 0,
+        "option-8": 0,
+        "option-9": 0,
+        "option-10": 0
       }
     },
     {
       "user_id": "b342e52d-4224-4b07-bc99-90ea64ae9e45",
-      "name": "Usuário 3",
+      "usuario": "Usuário 3",
       "apartament": 612,
       "bloc": "C",
+      "date_voting": "2024-02-08T00:00:00.000Z",
       "votos": {
-        "positive": 1,
-        "negative": 0,
-        "others": 0
+        "option-1": 1, 
+        "option-2": 0,
+        "option-3": 0,
+        "option-4": 0,
+        "option-5": 0,
+        "option-6": 0,
+        "option-7": 0,
+        "option-8": 0,
+        "option-9": 0,
+        "option-10": 0
       }
     }
   ]

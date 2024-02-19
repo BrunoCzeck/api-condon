@@ -1,17 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const pool = require("../database/connection.cjs")
 const chatController = {
-    getChat: async(req, res) => {
-        try {
-            const [rows, fields] = await pool.query("SELECT * FROM chat")
-            res.json({
-                data:rows
-            })
-        } catch(error) {
-            console.log(error)
-        }
-    },
-    
+     
     getChatId: async(req, res) => {
         try {
             const {
@@ -20,36 +10,39 @@ const chatController = {
     
             const sql = `
             SELECT
-            u.user_id,
-            u.date_created,
+            u.id_chat,
+            m.id_message,
             u.apartament,
             u.usuario,
             u.bloc,
             u.id_enterprise,
             m.date_message,
+            u.user_id,
             m.user_id AS mensagem_user_id,
+			m.user_id_send_message,
             m.description AS mensagem_description
             FROM
                 chat u
             JOIN
                 chat_message m ON u.user_id = m.user_id
             WHERE
-                u.user_id = ? ORDER BY date_message DESC
+                u.user_id = ? ORDER BY date_message ASC
             `;
     
             const [rows, fields] = await pool.query(sql, [user_id]);
     
             // Organize os dados conforme necessário
             const result = {
+                id_chat: rows[0].id_chat,
                 user_id: rows[0].user_id,
-                day: rows[0].day,
                 apartament: rows[0].apartament,
                 usuario: rows[0].usuario,
                 bloc: rows[0].bloc,
                 id_enterprise: rows[0].id_enterprise,
                 chat: rows.map(row => ({
-                    user_id: row.mensagem_user_id,
-                    description: row.mensagem_description
+                    user_id_send_message: row.user_id_send_message,
+                    description: row.mensagem_description,
+                    date_message: row.date_message
                 }))
             };
     
@@ -75,7 +68,6 @@ const chatController = {
                 bloc,
                 id_enterprise,
                 chat,
-
             } = req.body;
     
             const sqlPrincipal = `
@@ -90,12 +82,12 @@ const chatController = {
     
             if (chat && chat.length > 0) {
                 const sqlMensagens = `
-                    INSERT INTO chat_message (id_message, user_id, description, date_message)
-                    VALUES ("${randomUUID2}", ?, ?, NOW())
+                    INSERT INTO chat_message (id_message, user_id, user_id_send_message, description, date_message)
+                    VALUES ("${randomUUID2}", ?, ?, ?, NOW())
                 `;
 
                 for (const mensagem of chat) {
-                    const parametrosMensagem = [mensagem.user_id, mensagem.description];
+                    const parametrosMensagem = [mensagem.user_id, mensagem.user_id_send_message, mensagem.description];
                     await pool.query(sqlMensagens, parametrosMensagem);
                 }
             }   
@@ -132,18 +124,18 @@ const chatController = {
     
             // Adicione novas mensagens ao chat existente
             const sqlMensagens = `
-                INSERT INTO chat_message (id_message, user_id, description, date_message)
-                VALUES ("${randomUUID}", ?, ?, NOW())
+                INSERT INTO chat_message (id_message, user_id, user_id_send_message, description, date_message)
+                VALUES ("${randomUUID}", ?, ?, ?, NOW())
             `;
     
             for (const mensagem of chat) {
-                const parametrosMensagem = [mensagem.user_id, mensagem.description];
+                const parametrosMensagem = [mensagem.user_id, mensagem.user_id_send_message, mensagem.description];
                 await pool.query(sqlMensagens, parametrosMensagem);
             }
     
             // Recupere as mensagens atualizadas do chat
             const sqlConsultaMensagens = `
-                SELECT user_id, description
+                SELECT user_id, user_id_send_message, description
                 FROM chat_message
                 WHERE user_id = ?
             `;
@@ -154,6 +146,7 @@ const chatController = {
             const responseData = {
                 chat: rowsConsultaMensagens.map(mensagem => ({
                     user_id: mensagem.user_id,
+                    user_id_send_message: mensagem.user_id_send_message,
                     description: mensagem.description
                 }))
             };
