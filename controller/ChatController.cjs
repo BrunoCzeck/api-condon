@@ -2,44 +2,54 @@ const { v4: uuidv4 } = require('uuid');
 const pool = require("../database/connection.cjs")
 const chatController = {
      
-    getChatId: async(req, res) => {
+    getChatId: async (req, res) => {
         try {
-            const {
-                user_id
-            } = req.params;
+            const { user_id } = req.params;
     
             const sql = `
-            SELECT
-            u.id_chat,
-            m.id_message,
-            u.apartament,
-            u.usuario,
-            u.bloc,
-            u.id_enterprise,
-            m.date_message,
-            u.user_id,
-            m.user_id AS mensagem_user_id,
-			m.user_id_send_message,
-            m.description AS mensagem_description
-            FROM
-                chat u
-            JOIN
-                chat_message m ON u.user_id = m.user_id
-            WHERE
-                u.user_id = ? ORDER BY date_message ASC
+                SELECT
+                    u.id_chat,
+                    m.id_message,
+                    u.apartament,
+                    u.usuario,
+                    u.bloc,
+                    u.id_enterprise,
+                    m.date_message,
+                    u.user_id,
+                    m.user_id AS mensagem_user_id,
+                    m.user_id_send_message,
+                    m.description AS mensagem_description
+                FROM
+                    chat u
+                JOIN
+                    chat_message m ON u.user_id = m.user_id
+                WHERE
+                    u.user_id = ? ORDER BY date_message ASC
             `;
     
             const [rows, fields] = await pool.query(sql, [user_id]);
     
+            // Remova mensagens duplicadas com base no horário
+            const uniqueMessages = [];
+            const seenTimes = new Set();
+    
+            for (const row of rows) {
+                const messageTime = new Date(row.date_message).getTime();
+                if (!seenTimes.has(messageTime)) {
+                    seenTimes.add(messageTime);
+                    uniqueMessages.push(row);
+                }
+            }
+    
             // Organize os dados conforme necessário
             const result = {
-                id_chat: rows[0].id_chat,
-                user_id: rows[0].user_id,
-                apartament: rows[0].apartament,
-                usuario: rows[0].usuario,
-                bloc: rows[0].bloc,
-                id_enterprise: rows[0].id_enterprise,
-                chat: rows.map(row => ({
+                id_chat: uniqueMessages[0].id_chat,
+                user_id: uniqueMessages[0].user_id,
+                apartament: uniqueMessages[0].apartament,
+                usuario: uniqueMessages[0].usuario,
+                bloc: uniqueMessages[0].bloc,
+                id_enterprise: uniqueMessages[0].id_enterprise,
+                chat: uniqueMessages.map(row => ({
                     user_id_send_message: row.user_id_send_message,
                     description: row.mensagem_description,
                     date_message: row.date_message
@@ -47,6 +57,7 @@ const chatController = {
             };
     
             res.json(result);
+            console.log(result);
         } catch (error) {
             console.error(error);
             res.status(500).json({
@@ -55,7 +66,6 @@ const chatController = {
             });
         }
     },
-
     postChat: async(req, res) => {
         try {
             const randomUUID = uuidv4();
