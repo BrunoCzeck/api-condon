@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `enterprise`
+-- Table structure for table `polling`
 --
 
-DROP TABLE IF EXISTS `enterprise`;
+DROP TABLE IF EXISTS `polling`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `enterprise` (
-  `id_enterprise` varchar(255) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `cep` varchar(45) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `number` varchar(45) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_enterprise`)
+CREATE TABLE `polling` (
+  `id_polling` varchar(255) NOT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `date_init` datetime DEFAULT NULL,
+  `date_end` datetime DEFAULT NULL,
+  `permission_change` varchar(5) DEFAULT NULL,
+  `id_enterprise` varchar(255) DEFAULT NULL,
+  `vote` int DEFAULT NULL,
+  PRIMARY KEY (`id_polling`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `enterprise`
+-- Dumping data for table `polling`
 --
 
-LOCK TABLES `enterprise` WRITE;
-/*!40000 ALTER TABLE `enterprise` DISABLE KEYS */;
-INSERT INTO `enterprise` VALUES ('41949245-0d08-4564-bd12-90b6a2f86618','Arara Azul','Rua Dolores Duran','81810110','Curitiba','PR','2023-11-26 03:43:57','35',NULL),('5fed923e-5722-4df4-850d-763a8e686bf9','Park Royale','R. Elvira Zagonel','83020234','São josé dos pinhais','PR','2023-11-26 01:43:57','151',NULL);
-/*!40000 ALTER TABLE `enterprise` ENABLE KEYS */;
+LOCK TABLES `polling` WRITE;
+/*!40000 ALTER TABLE `polling` DISABLE KEYS */;
+/*!40000 ALTER TABLE `polling` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-18 23:02:16
+-- Dump completed on 2024-03-09 21:30:49

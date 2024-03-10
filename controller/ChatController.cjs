@@ -45,6 +45,49 @@ const chatController = {
         }
     }, 
 
+    getChatUserId: async (req, res) => {
+        try {
+            const { user_id } = req.params;
+    
+            const sql = `
+            SELECT
+                u.id_chat,
+                u.user_id,
+                u.apartament,
+                u.usuario,
+                u.bloc,
+                u.id_enterprise,
+                m.date_message,
+                m.description
+            FROM
+                chat u
+            JOIN
+                chat_message m ON u.user_id = m.user_id
+            WHERE
+                u.user_id = ?
+            AND m.date_message = (
+                SELECT MAX(date_message)
+                FROM chat_message
+                WHERE user_id = u.user_id
+            )
+            ORDER BY
+            m.date_message DESC
+            `;
+            
+            const [rows, fields] = await pool.query(sql, [user_id]);
+            
+    
+            res.json(rows);
+            console.log(rows);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: "Error: Unable to fetch data from the database"
+            });
+        }
+    }, 
+
     getChatId: async (req, res) => {
         try {
             const { user_id } = req.params;

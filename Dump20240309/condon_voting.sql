@@ -16,28 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `correspondence_type`
+-- Table structure for table `voting`
 --
 
-DROP TABLE IF EXISTS `correspondence_type`;
+DROP TABLE IF EXISTS `voting`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `correspondence_type` (
-  `id` varchar(255) NOT NULL,
+CREATE TABLE `voting` (
+  `id_voting` varchar(255) NOT NULL,
   `id_enterprise` varchar(255) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `title` varchar(45) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `votacao_change` int NOT NULL,
+  `date_init` varchar(45) NOT NULL,
+  `date_end` varchar(45) NOT NULL,
+  `option_1` varchar(45) NOT NULL,
+  `option_2` varchar(45) NOT NULL,
+  `option_3` varchar(45) DEFAULT NULL,
+  `option_4` varchar(45) DEFAULT NULL,
+  `option_5` varchar(45) DEFAULT NULL,
+  `option_6` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_voting`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `correspondence_type`
+-- Dumping data for table `voting`
 --
 
-LOCK TABLES `correspondence_type` WRITE;
-/*!40000 ALTER TABLE `correspondence_type` DISABLE KEYS */;
-INSERT INTO `correspondence_type` VALUES ('a946888f-aa09-4778-ad7f-93a37fcbbb9a','5fed923e-5722-4df4-850d-763a8e686bf9','Caixa'),('b1557cd7-4ada-49c9-98c3-054f874eea9f','5fed923e-5722-4df4-850d-763a8e686bf9','Sacola'),('beeebc4d-b603-4a56-a96d-a98646d1028b','41949245-0d08-4564-bd12-90b6a2f86618','Caixa'),('d191c17c-d0ae-40c4-a3af-23d227f6922d','5fed923e-5722-4df4-850d-763a8e686bf9','Correio'),('e6dbc41a-dada-4ac2-870f-5210d63ac135','5fed923e-5722-4df4-850d-763a8e686bf9','Carta');
-/*!40000 ALTER TABLE `correspondence_type` ENABLE KEYS */;
+LOCK TABLES `voting` WRITE;
+/*!40000 ALTER TABLE `voting` DISABLE KEYS */;
+INSERT INTO `voting` VALUES ('349b8c58-ef28-4ffb-ad80-885bbce7931a','41949245-0d08-4564-bd12-90b6a2f86618','Fechamento de Sacada','Reunião para discutirmos sobre o fechamento da sacada',1,'2024-03-05 00:00:00','2024-03-10 00:00:00','Mão Amiga','Padrão','Janela','','',''),('f3bbfd24-e0d0-4afd-b1bf-055a910da218','41949245-0d08-4564-bd12-90b6a2f86618','Catraca Piscina','Reunião para discutirmos sobre as catracas da Piscina',1,'2024-03-05 00:00:00','2024-03-10 00:00:00','Catraca Simples','Catraca Padrão','Catraca Completa','','','');
+/*!40000 ALTER TABLE `voting` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-18 23:02:18
+-- Dump completed on 2024-03-09 21:30:50

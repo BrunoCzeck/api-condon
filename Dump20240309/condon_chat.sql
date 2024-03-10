@@ -16,32 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `polling`
+-- Table structure for table `chat`
 --
 
-DROP TABLE IF EXISTS `polling`;
+DROP TABLE IF EXISTS `chat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `polling` (
-  `id_polling` varchar(255) NOT NULL,
-  `title` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `date_init` datetime DEFAULT NULL,
-  `date_end` datetime DEFAULT NULL,
-  `permission_change` varchar(5) DEFAULT NULL,
-  `id_enterprise` varchar(255) DEFAULT NULL,
-  `vote` int DEFAULT NULL,
-  PRIMARY KEY (`id_polling`)
+CREATE TABLE `chat` (
+  `id_chat` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `apartament` varchar(10) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `bloc` varchar(3) NOT NULL,
+  `id_enterprise` varchar(255) NOT NULL,
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`id_chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `polling`
+-- Dumping data for table `chat`
 --
 
-LOCK TABLES `polling` WRITE;
-/*!40000 ALTER TABLE `polling` DISABLE KEYS */;
-/*!40000 ALTER TABLE `polling` ENABLE KEYS */;
+LOCK TABLES `chat` WRITE;
+/*!40000 ALTER TABLE `chat` DISABLE KEYS */;
+INSERT INTO `chat` VALUES ('a40b4203-a3e2-45aa-8f61-4e945bada541','b342e52d-4224-4b07-bc99-90ea64ae2323','102','Harry','C','41949245-0d08-4564-bd12-90b6a2f86618','2024-02-27 20:05:07'),('ea359cdb-dfd9-4ac8-8551-769f553e0bbc','a390fac7-a9dd-4f97-9429-cf818c9198c2','511','Edinei','A','41949245-0d08-4564-bd12-90b6a2f86618','2024-02-26 22:10:17');
+/*!40000 ALTER TABLE `chat` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-18 23:02:17
+-- Dump completed on 2024-03-09 21:30:49

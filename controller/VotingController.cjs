@@ -8,7 +8,7 @@ const votingController = {
     
             const sql = `
             SELECT
-                (SELECT COUNT(DISTINCT a.id) FROM usuario a WHERE a.id_enterprise = ? AND a.priority <> "2") AS all_users,
+                (SELECT COUNT(DISTINCT a.id) FROM usuario a WHERE u.id_voting = ? AND a.priority <> "2") AS all_users,
                 m.id_enterprise,
                 u.votacao_change,
                 u.title,
@@ -25,18 +25,13 @@ const votingController = {
                 m.option_3 AS "votos.option-3",
                 m.option_4 AS "votos.option-4",
                 m.option_5 AS "votos.option-5",
-                m.option_6 AS "votos.option-6",
-                m.option_7 AS "votos.option-7",
-                m.option_8 AS "votos.option-8",
-                m.option_9 AS "votos.option-9",
-                m.option_10 AS "votos.option-10"
+                m.option_6 AS "votos.option-6"
             FROM
                 voting u
             JOIN
-                voting_users m ON u.id_enterprise = m.id_enterprise
+                voting_users m ON u.id_voting = m.id_voting
             WHERE
-                u.id_enterprise = ?
-            
+                u.id_voting = ?
             `;
     
             const [rows, fields] = await pool.query(sql, [id_enterprise, id_enterprise]);
@@ -62,11 +57,7 @@ const votingController = {
                         "option-3": row["votos.option-3"],
                         "option-4": row["votos.option-4"],
                         "option-5": row["votos.option-5"],
-                        "option-6": row["votos.option-6"],
-                        "option-7": row["votos.option-7"],
-                        "option-8": row["votos.option-8"],
-                        "option-9": row["votos.option-9"],
-                        "option-10": row["votos.option-10"],
+                        "option-6": row["votos.option-6"]
                     }
                 }))
             };
@@ -80,24 +71,36 @@ const votingController = {
             });
         }
     },
+
+    getVotingEnterprise: async (req, res) => { 
+        try {
+            const { id_enterprise } = req.params
+            const [rows, fields] = await pool.query("SELECT * FROM voting where id_enterprise = ?", [id_enterprise])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log("Sem dados")
+        }
+    },
     
     postVoting: async(req, res) => {
         try {
             const randomUUID = uuidv4();
             const {
-                id_enterprise, title, description, votacao_change, date_init, date_end,
-                option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10
+                id_enterprise, id_voting, title, description, votacao_change, date_init, date_end,
+                option_1, option_2, option_3, option_4, option_5, option_6
             } = req.body;
     
             const sqlPrincipal = `
-                INSERT INTO voting (id_voting, id_enterprise, title, description, votacao_change, date_init, date_end, 
-                    option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10)
-                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO voting (id_voting, id_enterprise, id_voting, title, description, votacao_change, date_init, date_end, 
+                    option_1, option_2, option_3, option_4, option_5, option_6)
+                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
     
             const parametrosPrincipal =  [ 
-                id_enterprise, title, description, votacao_change, date_init, date_end,
-                option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10
+                id_enterprise, id_voting, title, description, votacao_change, date_init, date_end,
+                option_1, option_2, option_3, option_4, option_5, option_6
             ];
             const [rowsPrincipal, fieldsPrincipal] = await pool.query(sqlPrincipal, parametrosPrincipal);
 
@@ -119,19 +122,19 @@ const votingController = {
         try {
             const randomUUID = uuidv4();
             const {
-                user_id, id_enterprise, usuario, apartament, bloc, date_voting,
-                option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10
+                user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
+                option_1, option_2, option_3, option_4, option_5, option_6 
             } = req.body;
     
             const sqlPrincipal = `
-                INSERT INTO voting_users (id_voting_users, user_id, id_enterprise, usuario, apartament, bloc, date_voting,
-                option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10)
-                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO voting_users (id_voting_users, user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
+                option_1, option_2, option_3, option_4, option_5, option_6 )
+                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
     
             const parametrosPrincipal =  [ 
-                user_id, id_enterprise, usuario, apartament, bloc, date_voting,
-                option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10
+                user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
+                option_1, option_2, option_3, option_4, option_5, option_6
             ];
             const [rowsPrincipal, fieldsPrincipal] = await pool.query(sqlPrincipal, parametrosPrincipal);
 
