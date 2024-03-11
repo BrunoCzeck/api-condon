@@ -4,7 +4,7 @@ const votingController = {
      
     getVotingUsersEnterpriseId: async (req, res) => {
         try {
-            const { id_enterprise } = req.params;
+            const { id_voting } = req.params;
     
             const sql = `
             SELECT
@@ -34,7 +34,7 @@ const votingController = {
                 u.id_voting = ?
             `;
     
-            const [rows, fields] = await pool.query(sql, [id_enterprise, id_enterprise]);
+            const [rows, fields] = await pool.query(sql, [id_voting, id_voting]);
     
             // Organize os dados conforme necessário
             const result = {
@@ -88,18 +88,18 @@ const votingController = {
         try {
             const randomUUID = uuidv4();
             const {
-                id_enterprise, id_voting, title, description, votacao_change, date_init, date_end,
+                id_enterprise, title, description, votacao_change, date_init, date_end,
                 option_1, option_2, option_3, option_4, option_5, option_6
             } = req.body;
     
             const sqlPrincipal = `
-                INSERT INTO voting (id_voting, id_enterprise, id_voting, title, description, votacao_change, date_init, date_end, 
+                INSERT INTO voting (id_voting, id_enterprise, title, description, votacao_change, date_init, date_end, 
                     option_1, option_2, option_3, option_4, option_5, option_6)
-                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES ('${randomUUID}', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
     
             const parametrosPrincipal =  [ 
-                id_enterprise, id_voting, title, description, votacao_change, date_init, date_end,
+                 id_enterprise, title, description, votacao_change, date_init, date_end,
                 option_1, option_2, option_3, option_4, option_5, option_6
             ];
             const [rowsPrincipal, fieldsPrincipal] = await pool.query(sqlPrincipal, parametrosPrincipal);
