@@ -83,6 +83,18 @@ const votingController = {
             console.log("Sem dados")
         }
     },
+
+    getVotingIdVoting: async (req, res) => { 
+        try {
+            const { id_voting } = req.params
+            const [rows, fields] = await pool.query("SELECT * FROM voting where id_voting = ?", [id_voting])
+            res.json({
+                data:rows[0]
+            })
+        } catch(error) {
+            console.log("Sem dados")
+        }
+    },
     
     postVoting: async(req, res) => {
         try {
@@ -150,8 +162,53 @@ const votingController = {
                 message: "Error: Unable to insert chat data"
             });
         }
+    },
+    
+    deletVoting: async(req, res) => {
+        try {
+            const { id_voting } = req.params
+            const sql = "DELETE FROM voting where id_voting = ?"
+            const [rows, fields] = await pool.query(sql, [id_voting])
+            res.json({
+                data:rows,
+                message: `Deletado pauta com sucesso!`
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    },
+
+    updateVoting: async(req, res) => {
+        try {
+            const { title, description, votacao_change, date_init, date_end, option_1, option_2, option_3, option_4, option_5, option_6 } = req.body
+            const { id_voting } = req.params
+
+            const sql = "UPDATE voting SET title = ?, description = ?, votacao_change = ?, date_init = ?, date_end = ?, option_1 = ?, option_2 = ?, option_3 = ?, option_4 = ?, option_5 = ?, option_6 = ? where id_voting = ?"
+            const [rows, fields] = await pool.query(sql, [title, description, votacao_change, date_init, date_end, option_1, option_2, option_3, option_4, option_5, option_6, id_voting])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    },
+
+    updateVotingUsers: async(req, res) => {
+        try {
+            const { date_voting, option_1, option_2, option_3, option_4, option_5, option_6 } = req.body
+            const { id_voting, user_id } = req.params
+
+            const sql = "UPDATE voting_users SET date_voting = ?, option_1 = ?, option_2 = ?, option_3 = ?, option_4 = ?, option_5 = ?, option_6 = ? where id_voting = ? and user_id = ?"
+            const [rows, fields] = await pool.query(sql, [date_voting, option_1, option_2, option_3, option_4, option_5, option_6, id_voting, user_id])
+            res.json({
+                data:rows
+            })
+        } catch(error) {
+            console.log(error)
+        }
     }
 }
+
 
 
 module.exports = votingController
