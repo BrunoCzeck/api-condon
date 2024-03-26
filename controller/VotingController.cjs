@@ -52,12 +52,12 @@ const votingController = {
                     bloc: row.bloc,
                     date_voting: row.date_voting,
                     votos: {
-                        "option-1": row["votos.option-1"],
-                        "option-2": row["votos.option-2"],
-                        "option-3": row["votos.option-3"],
-                        "option-4": row["votos.option-4"],
-                        "option-5": row["votos.option-5"],
-                        "option-6": row["votos.option-6"]
+                        "option_1": row["votos.option-1"],
+                        "option_2": row["votos.option-2"],
+                        "option_3": row["votos.option-3"],
+                        "option_4": row["votos.option-4"],
+                        "option_5": row["votos.option-5"],
+                        "option_6": row["votos.option-6"]
                     }
                 }))
             };
