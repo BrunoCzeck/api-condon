@@ -6,6 +6,7 @@ router.get("/:id_voting", votingController.getVotingUsersEnterpriseId)
 router.get("/enterprise/:id_enterprise", votingController.getVotingEnterprise)
 router.get("/pool/:id_voting", votingController.getVotingIdVoting)
 
+router.post("/user", votingController.getVotingUser)
 router.post("/", votingController.postVoting)
 router.post("/users", votingController.postVotingUsers)
 router.delete("/:id_voting", votingController.deletVoting)

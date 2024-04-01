@@ -95,6 +95,18 @@ const votingController = {
             console.log("Sem dados")
         }
     },
+
+    getVotingUser: async (req, res) => { 
+        try {
+            const { id_voting, user_id } = req.body
+            const [rows, fields] = await pool.query("SELECT * FROM voting_users where id_voting = ? and user_id = ?", [id_voting, user_id])
+            res.json({
+                data:rows[0]
+            })
+        } catch(error) {
+            console.log("Sem dados")
+        }
+    },
     
     postVoting: async(req, res) => {
         try {
@@ -134,18 +146,18 @@ const votingController = {
         try {
             const randomUUID = uuidv4();
             const {
-                user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
+                user_id, id_enterprise, id_voting, usuario, apartament, bloc,
                 option_1, option_2, option_3, option_4, option_5, option_6 
             } = req.body;
     
             const sqlPrincipal = `
                 INSERT INTO voting_users (id_voting_users, user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
                 option_1, option_2, option_3, option_4, option_5, option_6 )
-                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES ("${randomUUID}", ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?)
             `;
     
             const parametrosPrincipal =  [ 
-                user_id, id_enterprise, id_voting, usuario, apartament, bloc, date_voting,
+                user_id, id_enterprise, id_voting, usuario, apartament, bloc,
                 option_1, option_2, option_3, option_4, option_5, option_6
             ];
             const [rowsPrincipal, fieldsPrincipal] = await pool.query(sqlPrincipal, parametrosPrincipal);
