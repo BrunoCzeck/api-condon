@@ -1,0 +1,853 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Condon",
+    "dateExported": "2024-04-08T21:33:49.283Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "Usuario",
+            "containerId": "",
+            "created": "2024-01-10T00:46:33.013Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "041a55bb-616a-4346-8ddf-427f36ff225a",
+            "name": "Mural",
+            "containerId": "",
+            "created": "2024-01-10T00:46:33.014Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "aeefe957-77b3-4637-8061-cbef30e70a51",
+            "name": "Meeting",
+            "containerId": "",
+            "created": "2024-02-01T00:56:48.268Z",
+            "sortNum": 25000
+        },
+        {
+            "_id": "ef5daca4-a5b7-4eb4-9efb-7c545924a83e",
+            "name": "Enterprise",
+            "containerId": "",
+            "created": "2024-01-10T00:46:33.015Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "a3030e6e-f961-4f8b-9d83-8e2484145c38",
+            "name": "Correspondence",
+            "containerId": "",
+            "created": "2024-01-13T04:23:12.926Z",
+            "sortNum": 35000
+        },
+        {
+            "_id": "99931bd7-f17f-4790-81e4-98bf168c34b8",
+            "name": "Correspondence Type",
+            "containerId": "",
+            "created": "2024-01-13T05:04:46.102Z",
+            "sortNum": 37500
+        },
+        {
+            "_id": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "Scheduler",
+            "containerId": "",
+            "created": "2024-01-10T00:46:33.016Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "SchedulerType",
+            "containerId": "",
+            "created": "2024-01-10T00:46:33.017Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "Votação",
+            "containerId": "",
+            "created": "2024-02-18T19:32:08.518Z",
+            "sortNum": 55000
+        },
+        {
+            "_id": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "Chat",
+            "containerId": "",
+            "created": "2024-02-17T22:25:32.058Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "621b55da-3ef8-46a9-b238-b23dd180462b",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "PutUser/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/users/b342e52d-4224-4b07-bc99-90ea64ae9e45",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-01-10T00:46:33.014Z",
+            "modified": "2024-01-10T00:46:33.014Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"usuario\": \"Bruno Morata\",\r\n  \"senha\": \"123\",\r\n  \"email\": \"123@hotmail.com\",\r\n  \"priority\": 2\r\n}"
+            }
+        },
+        {
+            "_id": "700a17e6-cda6-44ae-987e-38ee888bdac4",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "DeleteUser/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/users/1366990f-10b4-4da4-bdff-3591bcc8d130",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2024-01-10T00:46:33.015Z",
+            "modified": "2024-01-10T00:46:33.015Z",
+            "headers": []
+        },
+        {
+            "_id": "0128cb0d-8f22-4302-b6fb-f5a48e03134a",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "createUser",
+            "url": "http://127.0.0.1:3333/api/v1/users",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-01-10T00:46:33.016Z",
+            "modified": "2024-01-10T00:46:33.016Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n     \"id\": \"e6624f2b-7124-44f7-91d4-053a71c0faf4\",\r\n    \"usuario\": \"Eduarda Nathaly Teixeira\",\r\n    \"senha\": \"123\",\r\n    \"img\": null,\r\n    \"apartament\": 611,\r\n    \"bloc\": \"C\",\r\n    \"email\": \"123@hotmail.com\",\r\n    \"date_created\": \"2023-10-31T21:27:23.000Z\",\r\n    \"priority\": \"1\",\r\n    \"id_enterprise\": \"41949245-0d08-4564-bd12-90b6a2f86618\"\r\n} "
+            }
+        },
+        {
+            "_id": "5f008684-242d-4f05-9aec-6f0f91ea8163",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "userValidate",
+            "url": "http://127.0.0.1:3333/api/v1/users/usersvalidate",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-01-10T00:46:33.017Z",
+            "modified": "2024-01-10T00:46:33.017Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"email\": \"eduarda@outlook.com.br\",\r\n    \"senha\": \"123\"\r\n} "
+            }
+        },
+        {
+            "_id": "ab241a6c-709f-4950-8b1a-37bee4577b5b",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "getUser/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/users/b342e52d-4224-4b07-bc99-90ea64ae9e45",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-01-10T00:46:33.018Z",
+            "modified": "2024-01-10T00:46:33.018Z",
+            "headers": []
+        },
+        {
+            "_id": "12f5ce0e-8762-44d2-a1ee-f259a4871336",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "getUserEnterprise/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/users/enterprise/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 55000,
+            "created": "2024-01-13T06:26:55.785Z",
+            "modified": "2024-01-13T06:27:37.333Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fe7df36d-238f-4ca1-8d0c-276d2f0b62df",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "b5675b99-a2cc-4af7-8e1a-a35aceba41b7",
+            "name": "getUsers",
+            "url": "http://127.0.0.1:3333/api/v1/users",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-01-10T00:46:33.019Z",
+            "modified": "2024-01-10T00:46:33.019Z",
+            "headers": []
+        },
+        {
+            "_id": "80a932b7-6738-4062-a88b-4df3ea2ef9b2",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "041a55bb-616a-4346-8ddf-427f36ff225a",
+            "name": "GetMural",
+            "url": "127.0.0.1:3333/api/v1/mural",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-01-10T00:46:33.020Z",
+            "modified": "2024-01-10T00:46:33.020Z",
+            "headers": []
+        },
+        {
+            "_id": "b4d4ed17-f675-4173-9569-4ef1fd9b182a",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "aeefe957-77b3-4637-8061-cbef30e70a51",
+            "name": "GetMeeting",
+            "url": "127.0.0.1:3333/api/v1/meeting",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-01T00:56:48.268Z",
+            "modified": "2024-02-01T00:57:42.837Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c4f68771-d197-4bff-ab5c-b7dca2104b44",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "041a55bb-616a-4346-8ddf-427f36ff225a",
+            "name": "PostMural",
+            "url": "127.0.0.1:3333/api/v1/mural",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-01-10T00:46:33.021Z",
+            "modified": "2024-01-10T00:46:33.021Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"[Instalação de Telas]\",\r\n    \"description\": \"Boa noite moradores, venho por meio desse post informar que no dia 05/10/2023 teremos a nossa reunião de condominio para estabelecer o fechamento da sacada, lembrando que precisamos de no minimo 180 votos para que seja efetivado a mudança\",\r\n    \"user_id\": \"a56f0dc1-3b19-4132-90b6-172ec9eb946e\",\r\n    \"id_enterprise\": \"41949245-0d08-4564-bd12-90b6a2f86618\"\r\n}"
+            }
+        },
+        {
+            "_id": "c27b2faf-5106-44ee-bcaa-2f24c53c836f",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "aeefe957-77b3-4637-8061-cbef30e70a51",
+            "name": "PostMeeting",
+            "url": "127.0.0.1:3333/api/v1/meeting",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-01T00:56:48.269Z",
+            "modified": "2024-02-01T01:00:20.810Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"title\": \"Fechamento de Sacada\",\n    \"link\": \"https://support.microsoft.com/pt-br/office/criar-um-link-ou-um-c%C3%B3digo-para-ingressar-em-uma-equipe-no-microsoft-teams-11b0de3b-9288-4cb4-bc49-795e7028296f\",\n    \"date_meeting\": \"2024/01/31\",\n    \"id_enterprise\": \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b710d0a9-0b62-47c3-aa7e-e5c4d1a786ae",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "PostVoting",
+            "url": "127.0.0.1:3333/api/v1/voting",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-18T19:32:08.519Z",
+            "modified": "2024-03-11T01:37:51.949Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n     \"id_enterprise\": \"41949245-0d08-4564-bd12-90b6a2f86618\",\n     \"title\": \"Catraca Piscina\",\n     \"description\": \"Reunião para discutirmos sobre as catracas da Piscina\",\n     \"votacao_change\": \"true\",\n     \"date_init\": \"2024-03-05 00:00:00\",\n     \"date_end\": \"2024-03-10 00:00:00\",\n     \"option_1\": \"Catraca Simples\",\n     \"option_2\": \"Catraca Padrão\",\n     \"option_3\": \"Catraca Completa\",\n     \"option_4\": \"121\",\n     \"option_5\": \"1231\",\n     \"option_6\": \"1231\"\n}\n",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "b4eb11e0-bdfe-4105-a86b-cbd9c03b4c45",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "PostVotingUsersEnterprise",
+            "url": "127.0.0.1:3333/api/v1/voting/users",
+            "method": "POST",
+            "sortNum": 86250,
+            "created": "2024-03-17T02:49:21.102Z",
+            "modified": "2024-04-01T01:10:22.667Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"user_id\": \"b342e52d-4224-4b07-bc99-90ea64ae2323\",\n    \"id_enterprise\": \"41949245-0d08-4564-bd12-90b6a2f86618\",\n    \"id_voting\": \"b22d8312-5883-4b97-aa2b-bdb376f72624\",\n    \"usuario\": \"Harry\",\n    \"apartament\": 102,\n    \"bloc\": \"C\",\n    \"option_1\": 0,\n    \"option_2\": 0,\n    \"option_3\": 1,\n    \"option_4\": 0,\n    \"option_5\": 0,\n    \"option_6\": 0\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d018b793-8aaf-4813-8da2-46a7c6b69756",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "PostVoting/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/fbe8703a-4445-4da4-b5a8-defd2072e53b",
+            "method": "PUT",
+            "sortNum": 86562.5,
+            "created": "2024-03-17T02:49:04.687Z",
+            "modified": "2024-04-01T00:59:15.985Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n     \"title\": \"Catraca Piscina TESTE!\",\n     \"description\": \"Piscina Reuniao\",\n     \"votacao_change\": 0,\n     \"date_init\": \"2024-03-05 00:00:00\",\n     \"date_end\": \"2024-03-10 00:00:00\",\n     \"option_1\": \"Catraca Simples\",\n     \"option_2\": \"Catraca Padrão\",\n     \"option_3\": \"Catraca Completa\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5c1afda1-ccc8-477f-af9c-ff945fac2727",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "PostVotingUsersEnterprise/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/users/fbe8703a-4445-4da4-b5a8-defd2072e53b/a390fac7-a9dd-4f97-9429-cf818c9198c2",
+            "method": "PUT",
+            "sortNum": 86875,
+            "created": "2024-02-19T00:24:55.095Z",
+            "modified": "2024-03-17T03:17:19.032Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"date_voting\": \"2024-03-17\",\n    \"option_1\": 0,\n    \"option_2\": 0,\n    \"option_3\": 1,\n    \"option_4\": 0,\n    \"option_5\": 0,\n    \"option_6\": 0\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "81577a40-4773-4258-b164-25e7a1c9b54d",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "GetVotingUserList/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/b22d8312-5883-4b97-aa2b-bdb376f72624",
+            "method": "GET",
+            "sortNum": 87500,
+            "created": "2024-02-18T19:32:08.518Z",
+            "modified": "2024-03-25T01:02:03.420Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "6c73716a-d414-403c-8665-6795c889ae59",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "GetVotingUser",
+            "url": "127.0.0.1:3333/api/v1/voting/user",
+            "method": "POST",
+            "sortNum": 88750,
+            "created": "2024-04-01T02:15:17.224Z",
+            "modified": "2024-04-01T02:35:06.839Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "\n{\n  \"user_id\": \"a390fac7-a9dd-4f97-9429-cf818c9198c2\",\n  \"id_voting\": \"b22d8312-5883-4b97-aa2b-bdb376f72624\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8f0702ff-e1dc-42ca-af7c-5d8660a700a4",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "041a55bb-616a-4346-8ddf-427f36ff225a",
+            "name": "GetMural/:Id",
+            "url": "127.0.0.1:3333/api/v1/mural/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-01-10T00:46:33.022Z",
+            "modified": "2024-01-10T00:46:33.022Z",
+            "headers": []
+        },
+        {
+            "_id": "467c73fd-a048-480c-8976-9e61990414e8",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "aeefe957-77b3-4637-8061-cbef30e70a51",
+            "name": "GetMeeting/:Id",
+            "url": "127.0.0.1:3333/api/v1/meeting/5fed923e-5722-4df4-850d-763a8e686bf9",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-01T00:56:48.270Z",
+            "modified": "2024-02-01T01:00:41.823Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3c3cc0df-71f7-4e93-8768-0ba06cc19be9",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "GetVotingEnterprise/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/enterprise/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-18T19:32:08.520Z",
+            "modified": "2024-03-20T00:47:54.675Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "6d16e521-7e91-405a-86ca-c82f3a67574f",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "ef5daca4-a5b7-4eb4-9efb-7c545924a83e",
+            "name": "PostEnterprise",
+            "url": "http://127.0.0.1:3333/api/v1/enterprise",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-01-10T00:46:33.023Z",
+            "modified": "2024-01-10T00:46:33.023Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"name\": \"Arara Azul Marinha\",\r\n  \"address\": \"Rua Dolores Duran\",\r\n  \"number\": \"32\",\r\n  \"cep\": \"83020234\",\r\n  \"city\": \"São josé dos pinhais\",\r\n  \"state\": \"PR\"\r\n} "
+            }
+        },
+        {
+            "_id": "be8e45f7-5eba-4011-accb-7f07e69c271a",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "a3030e6e-f961-4f8b-9d83-8e2484145c38",
+            "name": "PostCorresponce",
+            "url": "http://127.0.0.1:3333/api/v1/correspondence",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-01-13T04:23:12.926Z",
+            "modified": "2024-01-21T18:54:18.041Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": \"123\",\n  \"nome\": \"Bruno\",\n  \"apartament\": \"612\",\n  \"bloc\": \"D\",\n  \"tipo\": \"Caixa\",\n  \"date_correspondence\": \"20/11/2024\"\n} ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2aa5c474-00e4-4499-b494-58aa2fdb6089",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "99931bd7-f17f-4790-81e4-98bf168c34b8",
+            "name": "PostCorresponce",
+            "url": "http://127.0.0.1:3333/api/v1/correspondence/types",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-01-13T05:04:46.102Z",
+            "modified": "2024-02-01T00:21:55.525Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_enterprise\":\"5fed923e-5722-4df4-850d-763a8e686bf9\",\n  \"nome\": \"Alguem\"\n} ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0079693e-fdbd-4fe1-82e1-932eab818bb3",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "ef5daca4-a5b7-4eb4-9efb-7c545924a83e",
+            "name": "GetEnterprise",
+            "url": "http://127.0.0.1:3333/api/v1/enterprise",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-01-10T00:46:33.025Z",
+            "modified": "2024-01-10T00:46:33.025Z",
+            "headers": []
+        },
+        {
+            "_id": "cd63c21e-cb8b-4bc8-8ed4-ad6bc6d22d8e",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "a3030e6e-f961-4f8b-9d83-8e2484145c38",
+            "name": "GetCorresponce/IdEnterprise",
+            "url": "http://127.0.0.1:3333/api/v1/correspondence/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-01-13T04:23:12.927Z",
+            "modified": "2024-01-27T16:51:25.496Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3a53878b-a0e7-41a3-966c-2b4d4daa7db1",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "ef5daca4-a5b7-4eb4-9efb-7c545924a83e",
+            "name": "GetEnterprise/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/enterprise/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-01-10T00:46:33.026Z",
+            "modified": "2024-01-10T00:46:33.026Z",
+            "headers": []
+        },
+        {
+            "_id": "cd62b039-b723-412a-a67b-580ca46b8efe",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "a3030e6e-f961-4f8b-9d83-8e2484145c38",
+            "name": "GetCorresponceUser/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/correspondence/user/30b24a13-bbd5-4191-881d-8b6ec04652dd",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-01-13T04:23:12.928Z",
+            "modified": "2024-01-27T16:54:13.144Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4e73c345-d875-428b-b233-baf4e19e8e33",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "99931bd7-f17f-4790-81e4-98bf168c34b8",
+            "name": "GetCorresponce/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/correspondence/types/5fed923e-5722-4df4-850d-763a8e686bf9",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-01-13T05:04:46.104Z",
+            "modified": "2024-01-22T01:51:41.514Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4197dfb0-f318-4039-bbfa-fc78a0c2d1ea",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "GetScheduler/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/5fed923e-5722-4df4-850d-763a8e686bf9",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2024-01-10T00:46:33.027Z",
+            "modified": "2024-01-10T00:46:33.027Z",
+            "headers": []
+        },
+        {
+            "_id": "7c9a9ef5-144d-49b5-a419-b64e17586f8e",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "GetSchedulerEnterprise/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/enterprise/5fed923e-5722-4df4-850d-763a8e686bf9",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-01-10T00:46:33.028Z",
+            "modified": "2024-01-10T00:46:33.028Z",
+            "headers": []
+        },
+        {
+            "_id": "2ffe5d80-b047-4fd5-94a4-345a0af8def7",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "GetSchedulerReserve/:id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/reserve/5fed923e-5722-4df4-850d-763a8e686bf9?space=Piscina",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-01-10T00:46:33.029Z",
+            "modified": "2024-02-15T00:47:01.173Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "space",
+                    "value": "Piscina",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "126ed873-7f8f-44dd-b29a-347ed6c1a4fd",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "PostScheduler",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-01-10T00:46:33.030Z",
+            "modified": "2024-01-10T00:46:33.030Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"id_enterprise\": \"5fed923e-5722-4df4-850d-763a8e686bf9\",\r\n    \"user_id\": \"febed6b1-12a9-4477-b363-9cf6bf18249b\",\r\n    \"name\": \"Bruno Czeck\",\r\n    \"apartament\": 611,\r\n    \"bloc\": \"C\",\r\n    \"date_reserve\": \"10/12/2023\",\r\n    \"space\": \"Piscina\"\r\n}"
+            }
+        },
+        {
+            "_id": "1676056a-ca36-4672-84ae-66748f3ffb0c",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "PutScheduler/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/fb6b802e-b6a4-4454-8788-d143baf0f5ab",
+            "method": "PUT",
+            "sortNum": 170000,
+            "created": "2024-01-10T00:46:33.031Z",
+            "modified": "2024-01-10T00:46:33.031Z",
+            "headers": []
+        },
+        {
+            "_id": "84ca5be7-8673-4e75-b07a-0c5b5ab52fae",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "614682ab-63cf-47ad-a9ec-b488cb1ff9cc",
+            "name": "DeleteScheduler/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/3de63123-2dcc-4af2-ba41-ee08e5f692d0",
+            "method": "DELETE",
+            "sortNum": 180000,
+            "created": "2024-01-10T00:46:33.032Z",
+            "modified": "2024-01-10T00:46:33.032Z",
+            "headers": []
+        },
+        {
+            "_id": "e75e651e-9b70-4c8f-9112-de1d6597c162",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "GetSchedulerType/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/types/5fed923e-5722-4df4-850d-763a8e686bf9",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-01-10T00:46:33.033Z",
+            "modified": "2024-01-10T00:46:33.033Z",
+            "headers": []
+        },
+        {
+            "_id": "efc6138f-f4e4-4215-99da-64cdf0bbddc3",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "GetVotingPool/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/pool/fbe8703a-4445-4da4-b5a8-defd2072e53b",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-03-20T00:55:54.550Z",
+            "modified": "2024-03-20T00:56:26.713Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "8793c9ca-7d8d-42df-9d1b-2b386da29855",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "GetSchedulerIdEnterprise/:id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/types/enterprise/f5add54c-4bc3-465a-9582-fa6ca8a1799b",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-01-10T00:46:33.034Z",
+            "modified": "2024-01-10T00:46:33.034Z",
+            "headers": []
+        },
+        {
+            "_id": "d2a92b5a-7bc7-4a85-b112-7d48237c2bde",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "PostSchedulerType",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/types",
+            "method": "POST",
+            "sortNum": 210000,
+            "created": "2024-01-10T00:46:33.035Z",
+            "modified": "2024-02-15T00:49:48.492Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id_enterprise\": \"5fed923e-5722-4df4-850d-763a8e686bf9\",\n  \"tipo\": \"Piscina\",\n  \"hours\": [\n    \"09:00\",\n    \"10:00\",\n    \"11:00\",\n    \"12:00\",\n    \"13:00\",\n    \"14:00\",\n    \"15:00\",\n    \"16:00\",\n    \"17:00\",\n    \"18:00\",\n    \"19:00\",\n    \"20:00\",\n    \"21:00\"\n  ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2f93121f-74ea-4afe-a2ff-458ac351ed63",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "PutSchedulerType/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/types/563a22f9-0b3f-4887-8802-b94219a5d388",
+            "method": "PUT",
+            "sortNum": 220000,
+            "created": "2024-01-10T00:46:33.036Z",
+            "modified": "2024-01-10T00:46:33.036Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"hours\": [\r\n      \"09:00\", \r\n      \"10:00\"\r\n    ]\r\n} "
+            }
+        },
+        {
+            "_id": "6a692c0c-8920-4fb0-a8f8-1e5660fb8d26",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "c6beed07-77fd-4825-ab0c-5dbdc6866314",
+            "name": "DeleteSchedulerType/:Id",
+            "url": "http://127.0.0.1:3333/api/v1/scheduler/types/f337038d-87ec-4685-be64-969712a5b141",
+            "method": "DELETE",
+            "sortNum": 230000,
+            "created": "2024-01-10T00:46:33.037Z",
+            "modified": "2024-02-15T00:50:30.755Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e5295d15-084a-4fa5-b858-7ac802e28675",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "PostChat",
+            "url": "http://127.0.0.1:3333/api/v1/chat",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2024-02-17T22:25:59.493Z",
+            "modified": "2024-02-20T01:15:21.606Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": \"a390fac7-a9dd-4f97-9429-cf818c9198c2\",\n  \"apartament\": 511,\n  \"usuario\": \"Edinei\",\n  \"bloc\": \"A\",\n  \"id_enterprise\": \"41949245-0d08-4564-bd12-90b6a2f86618\",\n  \"chat\": [\n    {\n      \"user_id\": \"a390fac7-a9dd-4f97-9429-cf818c9198c2\",\n      \"user_id_send_message\":\"4e2a719d-522e-4807-acff-2ff0b01ecffd\",\n      \"description\": \"Chegou encomenda\"\n    }\n  ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c0176344-734c-4932-8dee-3f2cb7684365",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "PutChat/:id",
+            "url": "http://127.0.0.1:3333/api/v1/chat/a390fac7-a9dd-4f97-9429-cf818c9198c2",
+            "method": "PUT",
+            "sortNum": 250000,
+            "created": "2024-02-18T00:19:45.715Z",
+            "modified": "2024-03-01T02:40:28.361Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"chat\": [\n    {\n      \"user_id\": \"a390fac7-a9dd-4f97-9429-cf818c9198c2\",\n      \"user_id_send_message\": \"a390fac7-a9dd-4f97-9429-cf818c9198c2\",\n      \"description\": \"Morador: To indo\"\n    }\n  ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "692a1ae2-c163-4066-baba-37f00ee2a677",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "GetChat/:id",
+            "url": "http://127.0.0.1:3333/api/v1/chat/a390fac7-a9dd-4f97-9429-cf818c9198c2",
+            "method": "GET",
+            "sortNum": 260000,
+            "created": "2024-02-18T00:37:28.411Z",
+            "modified": "2024-02-27T01:17:29.030Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c7234223-4864-4889-a15c-b7efdf8cd8d1",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "GetChatEnterprise/:id",
+            "url": "http://127.0.0.1:3333/api/v1/chat/enterprise/41949245-0d08-4564-bd12-90b6a2f86618",
+            "method": "GET",
+            "sortNum": 270000,
+            "created": "2024-02-20T22:48:20.791Z",
+            "modified": "2024-02-20T23:01:27.394Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5d489b0d-e5e5-4f08-8316-d539a6c677d7",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "90b800f9-ee47-4e9e-b0a6-071958e5ed62",
+            "name": "GetChatUser/:id",
+            "url": "http://127.0.0.1:3333/api/v1/chat/user/a390fac7-a9dd-4f97-9429-cf818c9198c2",
+            "method": "GET",
+            "sortNum": 280000,
+            "created": "2024-03-01T02:17:13.978Z",
+            "modified": "2024-03-01T02:21:47.352Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "32bba1eb-0aa0-49d7-98bd-a7b95f3553f6",
+            "colId": "451e77f6-8235-41a0-aac7-437669200d3a",
+            "containerId": "f9007c7c-b266-46e7-a27c-19cb4de6f222",
+            "name": "DeleteVoting/:Id",
+            "url": "127.0.0.1:3333/api/v1/voting/003fc58b-0f65-4cb8-9791-ae8aea9786a7",
+            "method": "DELETE",
+            "sortNum": 290000,
+            "created": "2024-03-17T02:39:18.669Z",
+            "modified": "2024-03-17T02:41:26.038Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
